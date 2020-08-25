@@ -58,6 +58,7 @@ namespace UnityEngine.Perception.GroundTruth
 
         int m_LastFrameCaptured = -1;
         Ego m_EgoMarker;
+        public LensDistortion m_LensDistortion;
 
 #pragma warning disable 414
         //only used to confirm that GroundTruthRendererFeature is present in URP
@@ -376,6 +377,10 @@ namespace UnityEngine.Perception.GroundTruth
                 return;
 #endif
             CaptureRgbData(cam);
+
+            // Capture Lens Distortion
+            //var stack = VolumeManager.instance.stack;
+            //m_LensDistortion = VolumeManager.instance.stack.GetComponent<LensDistortion>();
 
             foreach (var labeler in m_Labelers)
             {
